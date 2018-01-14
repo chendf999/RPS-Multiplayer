@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Rock Paper Scissors</title>
+	<link rel="shortcut icon" href="./assets/images/peace.png">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="./assets/css/reset.css">
+	<link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+	<header>
+		<h1>Rock, Paper, Scissors</h1>
+	</header>
+
+<!-- room ------------------------------------------->
+	<section id="rooms">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Player 1</th>
+					<th scope="col">Player 2</th>
+					<th scope="col">Join</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- <tr>
+					<th scope="row">1</th>
+					<td>Mark</td>
+					<td>Otto</td>
+					<td class="enter">Enter</td>
+				</tr> -->
+			</tbody>
+		</table>
+
+		<div id="create-room">
+			<h2>Pick a Game Room<br>or</h2>
+			<button type="submit" id="create" class="btn btn-primary">Create a Room</button>
+		</div>
+	</section>
+
+<!-- game ------------------------------------------->
+	<section id="game">
+		<div id="board">
+			<div id="you-chose" class="panel"></div>
+			<div id="result" class="panel"></div>
+			<div id="oponent-chose" class="panel"></div>
+		</div>
+
+		<div id="chat">
+			<h2>Chat</h2>
+			<ul class="chat-box list-group">
+				<li class="list-group-item">Cras justo odio</li>
+				<li class="list-group-item">Dapibus ac facilisis in</li>
+				<li class="list-group-item">Morbi leo risus</li>
+				<li class="list-group-item">Porta ac consectetur ac</li>
+			</ul>
+
+			<div class="chat-input input-group mb-3">
+				<input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary" type="button">Button</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="control">
+			<div class="hand"><p>Rock</p></div>
+			<div class="hand"><p>Paper</p></div>
+			<div class="hand"><p>Scissors</p></div>
+		</div>
+	</section>
+
+<!-- log in ------------------------------------------->
+	<section id="username">
+		<form>
+		  <div class="form-group">
+		    <label for="username">Your Name</label>
+		    <input type="name" class="form-control" id="username" aria-describedby="username" placeholder="">
+		  </div>
+		 	<button type="submit" id="start" class="btn btn-primary">Start!</button>
+		</form>
+	</section>
+
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+	<script src="./assets/javascript/app.js"></script>
+</body>
+</html>

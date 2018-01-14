@@ -1,0 +1,68 @@
+
+body { text-align: center;}
+
+h1 { font-size: 28px;}
+
+header { background-color: grey; }
+
+section { width: 80%; margin: 20px auto;}
+
+th { text-align: center;}
+
+/*-------------------------------------
+| game board
+-------------------------------------*/
+#board {
+  display: flex;
+  justify-content: space-between;
+}
+
+#board .panel {
+  width: 30%;
+  height: 250px;
+  border: solid 1px grey;
+}
+
+/*-------------------------------------
+| chat
+-------------------------------------*/
+
+#chat .chat-box {
+  width: 60%;
+  margin: 20px auto;
+  border: solid 1px grey;
+}
+
+#chat .chat-input {
+  width: 60%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-group .form-control { width: 85%;}
+
+/*-------------------------------------
+| control
+-------------------------------------*/
+
+#control {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: 0 auto;
+}
+
+#control .hand {
+  margin: 10px;
+  background-color: grey;
+  width:
+}
+
+.hand p { padding: 20px;}
+
+/*-------------------------------------
+| login
+-------------------------------------*/
+
+#username .form-group { width: 60%; margin: 20px auto;}
