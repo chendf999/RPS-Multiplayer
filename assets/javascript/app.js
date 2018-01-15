@@ -199,7 +199,7 @@ $('#send-btn').on('click', function(){
 function update_chat(new_message){
 	chat_messages.push(new_message);
 	if(chat_messages.length > 4){
-		chat_messages.splice(1,1);
+		chat_messages.splice(0,1);
 	}
 	database.ref().update({
 		chat: chat_messages
