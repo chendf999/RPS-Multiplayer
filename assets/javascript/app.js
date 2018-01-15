@@ -20,8 +20,15 @@ var chat_messages = [];
 
 window.onbeforeunload = function () {
 	if(myname === player1 ){
+		var new_message = player1 + ' has left.';
+		update_chat(new_message);
+
 		database.ref('p1').remove();
 	} else if (myname === player2){
+
+		var new_message = player2 + ' has left.';
+		update_chat(new_message);
+
 		database.ref('p2').remove();
 	}
 };
@@ -81,6 +88,7 @@ function check_select(){
 	if(rps1 !==0 && rps2 !==0){
 		$('.player1 .panel, .player2 .panel').css('background-color', '#73b566');
 		setTimeout(show_result, 500);
+
 	} else if(rps1 !==0 && rps1 !== undefined) {
 		$('.player1 .panel').css('background-color', '#73b566');
 	} else if (rps2 !==0 && rps2 !== undefined){
@@ -114,7 +122,7 @@ function show_result() {
 			}
 		});
 		$('.panel').empty();
-	}, 3000);
+	}, 2000);
 }
 
 /*-------------------------------------
@@ -125,14 +133,17 @@ $("#join-btn").on('click', function(){
 	myname = $('#name-input').val();
 
 	if (player1 === noplayer) {
-
 		player1 = myname;
+
 		database.ref().update({
 			p1: {
 				name: player1,
 				rps: rps1
 			}
 		});
+
+		var new_message = player1 + ' has joined.';
+		update_chat(new_message);
 	}
 	else if (player2 === noplayer) {
 		player2 = myname;
@@ -143,6 +154,9 @@ $("#join-btn").on('click', function(){
 				rps: rps2
 			},
 		});
+
+		var new_message = player2 + ' has joined.';
+		update_chat(new_message);
 	}
 
 	sessionStorage.setItem('myname', myname);
@@ -179,14 +193,18 @@ $('#control .hand').on('click', function(){
 
 $('#send-btn').on('click', function(){
 	var new_message = $('#message-input').val();
+	update_chat(new_message);
+});
+
+function update_chat(new_message){
 	chat_messages.push(new_message);
 	if(chat_messages.length > 4){
 		chat_messages.splice(1,1);
 	}
-	database.ref().set({
+	database.ref().update({
 		chat: chat_messages
 	});
-});
+}
 
 
 database.ref('chat').on('value', function(snapshot){
@@ -198,7 +216,7 @@ database.ref('chat').on('value', function(snapshot){
 function print_chat(){
 	$('#control .chat-box').empty();
 	for(var i=0; i<chat_messages.length; i++){
-		$('#control .chat-box').prepend('<li class="list-group-item">' + chat_messages[i] + '</li>');
+		$('#control .chat-box').append('<li class="list-group-item">' + chat_messages[i] + '</li>');
 	}
 }
 

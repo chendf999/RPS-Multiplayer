@@ -41,6 +41,8 @@ header .join {
   border: solid 1px grey;
 }
 
+.result .panel h2 { margin-top: 60px; font-size: 30px;}
+
 .panel img { height: 100%;}
 
 /* chat -------------------------------*/
@@ -89,10 +91,14 @@ header .join {
   height: 108px;
 }
 
+.rps .hand img {
+	width: 100px; height: 100px;
+	margin: 5px auto;
+}
+
 .rps .hand:hover {
 	background-color: #73b566;
 	cursor: pointer;
 }
 
 #control h2 { margin: 10px 0;}
-
