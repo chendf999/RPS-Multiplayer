@@ -12,6 +12,8 @@ var player2;
 var rps1;
 var rps2;
 
+var chat_messages = [];
+
 /*-------------------------------------
 | on user leave
 -------------------------------------*/
@@ -29,6 +31,7 @@ window.onbeforeunload = function () {
 -------------------------------------*/
 
 database.ref().on('value', function(snapshot){
+
 	var p1exists = snapshot.child('p1').exists();
 	var p2exists = snapshot.child('p2').exists();
 
@@ -160,13 +163,21 @@ $('#control .hand').on('click', function(){
 });
 
 /*-------------------------------------
-| chat
+| chat function
 -------------------------------------*/
 
-// $('#send-btn').on('click', function(){
-// 	var message = $('#message').val();
-//
-// });
+database.ref('chat').on('child_added', function(snapshot){
+	$('#chat .chat-box').prepend('<li class="list-group-item">' + snapshot.val().message + '</li>');
+});
+
+
+$('#send-btn').on('click', function(){
+	var new_message = $('#message').val()
+	database.ref('chat').push({
+		message: new_message
+	});
+});
+
 
 // doc.ready closing
 });

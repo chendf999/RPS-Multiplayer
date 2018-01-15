@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>hi</h1>
+  </body>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script>
+  var array = ['a','b','c','d','e','f','g'];
+  console.log(array);
+
+    $('h1').on('click', function(){
+      array.splice(0,1);
+      array.push('n');
+      console.log(array);
+    });
+  </script>
+</html>
