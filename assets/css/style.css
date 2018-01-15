@@ -1,69 +1,98 @@
 
-body { text-align: center;}
+body { width: 75%; margin: 0 auto;}
 
-header { background-color: grey; }
-header h1 { font-size: 28px; padding: 25px;}
+h2 { font-size: 20px;}
 
-/*-------------------------------------
-| game board
--------------------------------------*/
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 80px;
+}
 
-#enter-name .form-group { width: 50%; margin: 20px auto;}
+header h1 { font-size: 28px; }
+header .join {
+	width: 30%;
+	display: flex;
+	justify-content: space-between;
+}
+
+#name-input {
+	width: 70%;
+	display: inline-block;
+}
+
+#join-btn { width: 28%; min-width: 85px;}
 
 #gameboard {
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  text-align: center;
   margin: 20px auto;
 }
 
-#gameboard .board { width: 30%;}
+#gameboard .board { width: 30%; }
 
 .board h2 { margin-bottom: 10px;}
+
 .board .panel {
   width: 100%;
-  height: 250px;
+  height: 200px;
   border: solid 1px grey;
 }
 
-/*-------------------------------------
-| chat
--------------------------------------*/
+.panel img { height: 100%;}
 
-#chat h2 { margin: 10px auto;}
-#chat .chat-box {
-  width: 50%;
-  margin: 20px auto;
-  text-align: left;
-  border: solid 1px grey;
-}
-
-.chat-box .list-group-item { padding: 3px 15px; border: none;}
-
-#chat .chat-input {
-  width: 50%;
-  margin: 20px auto;
-  display: flex;
-  justify-content: space-between;
-}
-
-.input-group .form-control { width: 100%;}
-.chat-input .btn { padding: 6px 25px;}
-
-/*-------------------------------------
-| control
--------------------------------------*/
+/* chat -------------------------------*/
 
 #control {
+  margin: 20px auto;
   display: flex;
   justify-content: space-between;
-  width: 50%;
-  margin: 0 auto;
+  align-items: flex-start;
 }
 
-#control .hand {
-  margin: 10px;
-  background-color: grey;
-  padding: 20px;
+.chat, .rps { width: 48%; height: 200px;}
+
+.chat-box {
+	border: 1px solid grey;
+	border-radius: 5px;
+	height: 108px;
+	overflow: hidden;
 }
+
+.chat-box .list-group-item {
+	padding: 3px 15px;
+	border: none;
+}
+
+.chat-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+#message-input { width: 80%;}
+
+#send-btn { width: 20%; min-width: 60px;}
+
+/* control -------------------------------*/
+
+.rps div{
+  display: flex;
+  justify-content: space-between;
+}
+
+.rps .hand {
+  background-color: grey;
+  width: 30%;
+  border-radius: 5px;
+  height: 108px;
+}
+
+.rps .hand:hover {
+	background-color: #73b566;
+	cursor: pointer;
+}
+
+#control h2 { margin: 10px 0;}
 

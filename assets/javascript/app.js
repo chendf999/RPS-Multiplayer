@@ -15,7 +15,7 @@ var rps2;
 var chat_messages = [];
 
 /*-------------------------------------
-| on user leave
+| on player leave
 -------------------------------------*/
 
 window.onbeforeunload = function () {
@@ -27,7 +27,7 @@ window.onbeforeunload = function () {
 };
 
 /*-------------------------------------
-| initial setup
+| on value change
 -------------------------------------*/
 
 database.ref().on('value', function(snapshot){
@@ -40,7 +40,7 @@ database.ref().on('value', function(snapshot){
 		player2 = snapshot.val().p2.name;
 		rps1 = snapshot.val().p1.rps;
 		rps2 = snapshot.val().p2.rps;
-		$('#enter-name').hide();
+		$('.join').hide();
 	}
 	else if (p1exists && !p2exists) {
 		player1 = snapshot.val().p1.name;
@@ -66,22 +66,33 @@ database.ref().on('value', function(snapshot){
 	$('.player1 h2').html(player1);
 	$('.player2 h2').html(player2);
 
-	if(rps1 !==0 && rps2 !==0){
-		show_result();
-	}
+	check_select();
 });
 
 function canjoin(){
 	if (myname === player1 || myname === player2){
-		$('#enter-name').hide();
+		$('.join').hide();
 	} else {
-		$('#enter-name').show();
+		$('.join').show();
+	}
+}
+
+function check_select(){
+	if(rps1 !==0 && rps2 !==0){
+		$('.player1 .panel, .player2 .panel').css('background-color', '#73b566');
+		setTimeout(show_result, 500);
+	} else if(rps1 !==0 && rps1 !== undefined) {
+		$('.player1 .panel').css('background-color', '#73b566');
+	} else if (rps2 !==0 && rps2 !== undefined){
+		$('.player2 .panel').css('background-color', '#73b566');
 	}
 }
 
 function show_result() {
-	$('.player1 .panel').html('<h2>' + rps1 + '</h2>');
-	$('.player2 .panel').html('<h2>' + rps2 + '</h2>');
+	$('.panel').css('background-color', 'white');
+
+	$('.player1 .panel').append('<img src="./assets/images/rps-' + rps1 + '.png">');
+	$('.player2 .panel').append('<img src="./assets/images/rps-' + rps2 + '.png">');
 
 	if (rps1 === rps2) {
 		$('.result .panel').html('<h2>Tie!</h2>');
@@ -103,19 +114,19 @@ function show_result() {
 			}
 		});
 		$('.panel').empty();
-	}, 2000);
+	}, 3000);
 }
 
 /*-------------------------------------
-| enter your name
+| join game
 -------------------------------------*/
 
-$("#enter-btn").on('click', function(){
+$("#join-btn").on('click', function(){
 	myname = $('#name-input').val();
 
 	if (player1 === noplayer) {
-		player1 = myname;
 
+		player1 = myname;
 		database.ref().update({
 			p1: {
 				name: player1,
@@ -135,7 +146,7 @@ $("#enter-btn").on('click', function(){
 	}
 
 	sessionStorage.setItem('myname', myname);
-	$('#enter-name').hide();
+	$('.join').hide();
 });
 
 /*-------------------------------------
@@ -166,18 +177,30 @@ $('#control .hand').on('click', function(){
 | chat function
 -------------------------------------*/
 
-database.ref('chat').on('child_added', function(snapshot){
-	$('#chat .chat-box').prepend('<li class="list-group-item">' + snapshot.val().message + '</li>');
-});
-
-
 $('#send-btn').on('click', function(){
-	var new_message = $('#message').val()
-	database.ref('chat').push({
-		message: new_message
+	var new_message = $('#message-input').val();
+	chat_messages.push(new_message);
+	if(chat_messages.length > 4){
+		chat_messages.splice(1,1);
+	}
+	database.ref().set({
+		chat: chat_messages
 	});
 });
 
+
+database.ref('chat').on('value', function(snapshot){
+	chat_messages = snapshot.val();
+	// console.log(chat_messages);
+	print_chat();
+});
+
+function print_chat(){
+	$('#control .chat-box').empty();
+	for(var i=0; i<chat_messages.length; i++){
+		$('#control .chat-box').prepend('<li class="list-group-item">' + chat_messages[i] + '</li>');
+	}
+}
 
 // doc.ready closing
 });

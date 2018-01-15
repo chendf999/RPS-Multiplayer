@@ -27,56 +27,52 @@
 </head>
 <body>
 	<header>
-		<h1>Rock, Paper, Scissors</h1>
+		<h1>Rock, Paper, Scissors!</h1>
+		<div class="join">
+			<h2></h2>
+			<input type="name" class="form-control" id="name-input" aria-describedby="username" placeholder="Enter your name">
+			<button type="button" id="join-btn" class="btn btn-success">Join Now!</button>
+		</div>
 	</header>
-
-	<section id="enter-name">
-		<h2></h2>
-		<form>
-		  <div class="form-group">
-		    <label for="username">Your Name</label>
-		    <input type="name" class="form-control" id="name-input" aria-describedby="username" placeholder="">
-		  </div>
-		 	<button type="button" id="enter-btn" class="btn btn-primary">Enter</button>
-		</form>
-	</section>
 
 	<section id="gameboard">
 		<div class="player1 board">
 			<h2></h2>
 			<div class="panel"></div>
 		</div>
+
 		<div class="result board">
 			<h2>vs</h2>
 			<div class="panel"></div>
 		</div>
+
 		<div class="player2 board">
 			<h2></h2>
 			<div class="panel"></div>
 		</div>
 	</section>
 
-	<section id="chat">
-		<h2>Chat</h2>
-		<ul class="chat-box list-group">
-		</ul>
+	<section id="control">
+		<div class="chat">
+			<h2>Chat</h2>
+			<ul class="chat-box list-group"></ul>
 
-		<div class="chat-input input-group mb-3">
-			<input id="message" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-			<div class="input-group-append">
-				<button id="send-btn" class="btn btn-outline-secondary" type="button">Enter</button>
+			<div class="chat-input">
+				<input id="message-input" type="text" class="form-control" placeholder="Enter your message">
+				<button id="send-btn" class="btn btn-success" type="button">Enter</button>
 			</div>
 		</div>
-	</div>
+		</div>
+
+		<div class="rps">
+			<h2>Choose Wisely</h2>
+			<div>
+			<img class="hand" src="./assets/images/rps-r.png"data="r">
+			<img class="hand" src="./assets/images/rps-p.png"data="p">
+			<img class="hand" src="./assets/images/rps-s.png"data="s">
+			</div>
+		</div>
 	</section>
-
-	<section id="control">
-		<p class="hand" data="r">Rock</div>
-		<p class="hand" data="p">Paper</div>
-		<p class="hand" data="s">Scissors</div>
-	</section>
-
-
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 
